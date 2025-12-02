@@ -54,13 +54,13 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <NavLink to="/" className="font-semibold">
+                <NavLink to="/" className="font-bold ">
                   Home
                 </NavLink>
               </li>
               
               <li>
-                <NavLink to="/myProfile" className="font-semibold">
+                <NavLink to="/myProfile" className="font-bold ">
                   My Profile
                 </NavLink>
               </li>
@@ -82,8 +82,8 @@ const Navbar = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-primary font-semibold border-b-2 border-primary"
-                    : "font-semibold"
+                    ? "text-primary  font-bold bg-fuchsia-500 border-b-2 border-primary"
+                    : "font-bold "
                 }
               >
                 Home
@@ -95,8 +95,8 @@ const Navbar = () => {
                 to="/myProfile"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-primary font-semibold border-b-2 border-primary"
-                    : "font-semibold"
+                    ? "text-primary  font-bold bg-fuchsia-500 border-b-2 border-primary"
+                    : "font-bold "
                 }
               >
                 My Profile

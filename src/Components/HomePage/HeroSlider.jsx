@@ -15,23 +15,23 @@ import img5 from "../../assets/HeroSection-Images/Yoga with sun.jpg";
 export default function Slider() {
   return (
     <>
-  <div className="flex justify-between items-center gap-5 ">
+  <div className="flex flex-col-reverse md:flex-col lg:flex-row justify-between items-center gap-5 p-5">
 
     {/* Left Side Text */}
     <div >
-      <h1 className="text-3xl font-bold">
+      <h1 className="text-2xl mt-10 md:text-3xl lg:text-4xl font-bold">
         Teach What <span className="text-amber-400">You Know</span> Learn
         what <span className="text-pink-500">You Love.</span>
       </h1>
 
-      <p className="font-semibold text-accent mt-5 ">
+      <p className="font-medium text-accent mt-4 md:mt-5 text-sm md:text-base">
         SkillSwap is an interesting platform that will help you learn
         skills and exchange your skill.
       </p>
     </div>
 
     {/* Right Side Slider */}
-    <div className="w-2/3 mt-10">
+    <div className="w-full mt-10 lg:w-1/2 mt-5 md:mt-8">
       <Swiper navigation={true} modules={[Navigation]}>
         {[img1, img2, img3, img4, img5].map((img, i) => (
           <SwiperSlide key={i}>

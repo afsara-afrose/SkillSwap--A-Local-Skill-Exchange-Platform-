@@ -6,13 +6,11 @@ import { toast } from "react-toastify";
 
 const MyProfile = () => {
   const { user } = useContext(AuthContext);
-
   const [isEditing, setIsEditing] = useState(false);
 
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
-
     const newName = form.name.value;
     const newPhoto = form.photoURL.value;
 
@@ -22,7 +20,7 @@ const MyProfile = () => {
     })
       .then(() => {
         toast.success("Profile updated successfully!");
-        setIsEditing(false); 
+        setIsEditing(false);
       })
       .catch((error) => {
         toast.error(error.message);
@@ -30,27 +28,27 @@ const MyProfile = () => {
   };
 
   return (
-    <MyContainer className="flex justify-center items-center min-h-screen">
-      <div className="w-full max-w-lg bg-white shadow-2xl rounded-2xl p-8">
+    <MyContainer className="flex justify-center items-center min-h-screen px-4">
+      <div className="w-full max-w-md md:max-w-lg bg-white shadow-2xl rounded-2xl p-6 md:p-8">
 
-        
+        {/* Profile Image */}
         <div className="flex flex-col items-center">
           <img
             src={user?.photoURL || "https://i.ibb.co/0f8Vf3K/default-avatar.png"}
             alt={user?.displayName}
-            className="w-32 h-32 rounded-full border-4 border-pink-500 object-cover"
+            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-pink-500 object-cover"
           />
 
-          <h2 className="text-2xl font-bold mt-4 text-gray-800">
+          <h2 className="text-xl md:text-2xl font-bold mt-4 text-gray-800 text-center">
             {user?.displayName}
           </h2>
 
-          <p className="text-gray-600 mt-1">{user?.email}</p>
+          <p className="text-gray-600 mt-1 text-center">{user?.email}</p>
         </div>
 
-        
+        {/* Editing Form */}
         {isEditing ? (
-          <form onSubmit={handleUpdate} className="mt-8 space-y-4">
+          <form onSubmit={handleUpdate} className="mt-6 md:mt-8 space-y-4">
 
             <div>
               <label className="label font-semibold">Update Name</label>
@@ -72,7 +70,7 @@ const MyProfile = () => {
               />
             </div>
 
-            <div className="flex  flex-row gap-3">
+            <div className="flex flex-col md:flex-row gap-3">
               <button type="submit" className="btn btn-primary w-full">
                 Save Changes
               </button>
@@ -87,21 +85,21 @@ const MyProfile = () => {
           </form>
         ) : (
           <>
-            {/* Normal Profile View */}
-            <div className="mt-8 space-y-4">
+            {/* Profile Info */}
+            <div className="mt-6 md:mt-8 space-y-4">
               <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl border">
                 <span className="font-semibold text-gray-700">Name</span>
-                <span className="text-gray-800">{user?.displayName}</span>
+                <span className="text-gray-800 break-all">{user?.displayName}</span>
               </div>
 
               <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl border">
                 <span className="font-semibold text-gray-700">Email</span>
-                <span className="text-gray-800">{user?.email}</span>
+                <span className="text-gray-800 break-all">{user?.email}</span>
               </div>
             </div>
 
             {/* Update Button */}
-            <div className="mt-8 flex justify-center">
+            <div className="mt-6 md:mt-8 flex justify-center">
               <button
                 onClick={() => setIsEditing(true)}
                 className="btn btn-primary w-full max-w-xs p-3 rounded-lg hover:bg-pink-600 transition"

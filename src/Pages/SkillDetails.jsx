@@ -7,10 +7,8 @@ const SkillDetails = () => {
   const { skillId } = useParams();
   const { skills } = useSkills();
 
-  
   const skill = skills.find((p) => String(p.skillId) === skillId);
 
-  
   if (!skill) {
     return (
       <div className="h-[300px] flex justify-center items-center">
@@ -22,70 +20,83 @@ const SkillDetails = () => {
   }
 
   return (
-    <MyContainer className="w-full flex justify-center py-10  ">
+    <MyContainer className="w-full flex justify-center py-10 px-3 md:px-0">
       <div className="w-full max-w-3xl bg-pink-100 shadow-2xl rounded-2xl overflow-hidden border">
-        <div className="h-[280px] w-full p-10">
+
+        {/* Image */}
+        <div className="w-full h-[220px] sm:h-[260px] md:h-[300px]">
           <img
             src={skill.image}
             alt={skill.skillName}
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="p-8 space-y-8">
+        <div className="p-6 sm:p-8 space-y-6">
+
+          {/* Skill Title */}
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
               {skill.skillName}
             </h1>
-            <p className="text-gray-600 mt-1 text-lg">
+            <p className="text-gray-600 mt-1 text-base sm:text-lg">
               Category: {skill.category}
             </p>
           </div>
 
+          {/* Description */}
           <div>
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
               About This Skill
             </h2>
-            <p className="text-gray-700 leading-relaxed">{skill.description}</p>
+            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+              {skill.description}
+            </p>
           </div>
 
-          <div className="bg-gray-50 p-5 rounded-xl border">
+          {/* Provider */}
+          <div className="bg-gray-50 p-4 sm:p-5 rounded-xl border">
             <h3 className="text-lg font-semibold mb-2">Provider Information</h3>
-
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-sm sm:text-base">
               <span className="font-semibold">Name:</span> {skill.providerName}
             </p>
-            <p className="text-gray-700">
-              <span className="font-semibold">Email:</span>{" "}
-              {skill.providerEmail}
+            <p className="text-gray-700 text-sm sm:text-base">
+              <span className="font-semibold">Email:</span> {skill.providerEmail}
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-6 text-center">
-            <div className="bg-blue-50 p-5 border rounded-xl">
-              <p className="text-gray-500">Price</p>
+          {/* Price - Rating - Slots */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
+
+            <div className="bg-blue-50 p-4 border rounded-xl">
+              <p className="text-gray-500 text-sm">Price</p>
               <h3 className="text-xl font-bold text-blue-700">
                 ${skill.price}
               </h3>
             </div>
 
-            <div className="bg-yellow-50 p-5 border rounded-xl">
-              <p className="text-gray-500">Rating</p>
+            <div className="bg-yellow-50 p-4 border rounded-xl">
+              <p className="text-gray-500 text-sm">Rating</p>
               <h3 className="text-xl font-bold text-yellow-600">
                 ⭐ {skill.rating}
               </h3>
             </div>
 
-            <div className="bg-green-50 p-5 border rounded-xl">
-              <p className="text-gray-500">Slots</p>
+            <div className="bg-green-50 p-4 border rounded-xl">
+              <p className="text-gray-500 text-sm">Slots</p>
               <h3 className="text-xl font-bold text-green-700">
                 {skill.slotsAvailable}
               </h3>
             </div>
+
           </div>
 
+          {/* Book Button */}
           <div className="pt-6">
-            <Link to={`/book-session/${skills.skillId}`} className="inline-block px-8 py-3 text-center transition w-full card-btn">
+            <Link
+              to={`/book-session/${skill.skillId}`}
+              className="inline-block px-8 py-3 text-center transition w-full card-btn"
+            >
               Book Session
             </Link>
           </div>

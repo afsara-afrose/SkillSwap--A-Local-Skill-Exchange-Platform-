@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import "animate.css";
 import useSkills from "../../hooks/useSkills";
 
 const TopRatedProviders = () => {
-    const {skills}=useSkills()
-  // AOS animations list
+  const { skills } = useSkills();
+
   const animations = [
     "fade-up",
     "fade-down",
@@ -24,12 +25,12 @@ const TopRatedProviders = () => {
   if (!skills || !Array.isArray(skills)) return null;
 
   return (
-    <div className="my-16">
-      <h2 className="text-3xl font-bold text-center mb-10">
-        ⭐ Top Rated Providers
+    <div className="my-16 bg-emerald-200 rounded-2xl">
+      <h2 className="text-3xl font-bold text-center p-10 animate__animated animate__wobble">
+         Top Rated <span className='text-yellow-400'>Providers</span>
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-10">
         {skills.map((skill, index) => (
           <div
             key={skill.skillId}
@@ -42,10 +43,13 @@ const TopRatedProviders = () => {
             </h3>
 
             <p className="mt-1 text-gray-700">
-              <span className="font-semibold">Provider:</span> {skill.providerName}
+              <span className="font-semibold">Provider:</span>{" "}
+              {skill.providerName}
             </p>
 
-            <p className="mt-2 text-yellow-600 font-bold">⭐ Rating: {skill.rating}</p>
+            <p className="mt-2 text-yellow-600 font-bold">
+              ⭐ Rating: {skill.rating}
+            </p>
 
             <p className="text-green-600 font-semibold mt-1">
               Slots Available: {skill.slotsAvailable}

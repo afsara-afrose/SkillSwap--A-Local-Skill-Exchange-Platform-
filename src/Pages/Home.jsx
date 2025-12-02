@@ -44,17 +44,17 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 rounded-xl bg-indigo-200 p-10">
           {skills.map((skill) => (
             <SkillsCard key={skill.id} skill={skill} />
           ))}
         </div>
       )}
 
-      <div>
-       <TopRatedProviders  />
+      <div className="mt-20 mb-10 ">
+       <TopRatedProviders   />
       </div>
-      <div className="mt-10 mb-10 ">
+      <div className="mt-20 mb-10 ">
         <SkillListSection skills={skills}></SkillListSection>
         
        

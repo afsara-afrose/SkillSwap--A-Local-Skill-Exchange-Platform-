@@ -10,59 +10,38 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-amber-500 text-gray-200 py-10">
-      <div className="container mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Contact Info */}
-        <div>
+      <div className="container mx-auto px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        
+        <div className="text-center sm:text-left">
           <h3 className="font-bold text-lg mb-3">Contact Us</h3>
           <p>Email: support@skillswap.com</p>
           <p>Phone: +880 1234 567 890</p>
           <p>Address: 123 SkillSwap Street, Dhaka, Bangladesh</p>
         </div>
 
-        {/* Social Links */}
-        <div>
+        <div className="text-center">
           <h3 className="font-bold text-lg mb-3">Follow Us</h3>
-          <div className="flex gap-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+          <div className="flex justify-center sm:justify-start md:justify-center gap-4">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
               <FaFacebookF className="hover:text-blue-500 transition" />
             </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <FaTwitter className="hover:text-blue-400 transition" />
             </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
               <FaInstagram className="hover:text-pink-500 transition" />
             </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
               <FaLinkedinIn className="hover:text-blue-600 transition" />
             </a>
           </div>
         </div>
 
-        {/* Policies */}
-        <div>
+        <div className="text-center sm:text-left md:text-right">
           <h3 className="font-bold text-lg mb-3">Policy</h3>
           <ul>
             <li>
-              <Link
-                to="/privacy-policy"
-                className="hover:text-white transition"
-              >
+              <Link to="/privacy-policy" className="hover:text-white transition">
                 Privacy Policy
               </Link>
             </li>
