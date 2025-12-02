@@ -6,12 +6,15 @@ import { AuthContext } from "../Provider/AuthContext";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../Firebase/firrebase.config";
 import { RingLoader } from "react-spinners";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -78,14 +81,21 @@ const Login = () => {
               required
             />
             {/* passowrd  */}
-            <label className="label">Password</label>
-            <input
-              name="password"
-              type="password"
-              className="input"
-              placeholder="Password"
-              required
-            />
+            <div className="relative">
+                <label className="label">Password</label>
+                <input
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  className="input rounded-full"
+                  placeholder="Password"
+                />
+                <span
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-[28px] top-[30px] cursor-pointer text-xl"
+                >
+                  {showPass ? <FaEye /> : <IoEyeOff />}
+                </span>
+              </div>
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>

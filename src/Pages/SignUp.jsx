@@ -1,16 +1,19 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Provider/AuthContext";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../Firebase/firrebase.config";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 
 
 const provider = new GoogleAuthProvider();
 
 const SignUp = () => {
   const {createUser,updateUser}=use (AuthContext)
+  const [showPass, setShowPass] = useState(false);
 
   const navigate=useNavigate()
     const from = location.state?.from?.pathname || "/";
@@ -104,14 +107,21 @@ const SignUp = () => {
             />
 
             {/* passowrd  */}
-            <label className="label">Password</label>
-            <input
-              name="password"
-              type="password"
-              className="input"
-              placeholder="Password"
-              required
-            />
+          <div className="relative">
+                <label className="label">Password</label>
+                <input
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  className="input rounded-full"
+                  placeholder="Password"
+                />
+                <span
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-[28px] top-[30px] cursor-pointer text-xl"
+                >
+                  {showPass ? <FaEye /> : <IoEyeOff />}
+                </span>
+              </div>
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
