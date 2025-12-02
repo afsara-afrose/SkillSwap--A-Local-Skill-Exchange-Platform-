@@ -84,11 +84,7 @@ const ViewDetails = () => {
             </div>
           </div>
 
-          <div className="pt-6">
-            <Link to={`/book-session/${skills.skillId}`} className="inline-block px-8 py-3  transition w-full card-btn">
-              Book Session
-            </Link>
-          </div>
+         
         </div>
       </div>
     </MyContainer>

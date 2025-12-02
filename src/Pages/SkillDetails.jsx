@@ -1,17 +1,98 @@
-import React from 'react';
-import { useParams } from 'react-router';
-import useSkills from '../hooks/useSkills';
+import React from "react";
+import { useParams, Link } from "react-router";
+import useSkills from "../hooks/useSkills";
+import MyContainer from "../Components/MyContainer";
 
 const SkillDetails = () => {
-    const {skillId} =useParams()
-    console.log(skillId)
-    const {skills}=useSkills()
-    console.log(skills)
+  const { skillId } = useParams();
+  const { skills } = useSkills();
+
+  
+  const skill = skills.find((p) => String(p.skillId) === skillId);
+
+  
+  if (!skill) {
     return (
-        <div>
-            <h1>skillId</h1>
-        </div>
+      <div className="h-[300px] flex justify-center items-center">
+        <p className="text-xl font-semibold text-gray-500">
+          Loading skill details...
+        </p>
+      </div>
     );
+  }
+
+  return (
+    <MyContainer className="w-full flex justify-center py-10  ">
+      <div className="w-full max-w-3xl bg-pink-100 shadow-2xl rounded-2xl overflow-hidden border">
+        <div className="h-[280px] w-full p-10">
+          <img
+            src={skill.image}
+            alt={skill.skillName}
+            className="w-full h-full object-cover "
+          />
+        </div>
+
+        <div className="p-8 space-y-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">
+              {skill.skillName}
+            </h1>
+            <p className="text-gray-600 mt-1 text-lg">
+              Category: {skill.category}
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              About This Skill
+            </h2>
+            <p className="text-gray-700 leading-relaxed">{skill.description}</p>
+          </div>
+
+          <div className="bg-gray-50 p-5 rounded-xl border">
+            <h3 className="text-lg font-semibold mb-2">Provider Information</h3>
+
+            <p className="text-gray-700">
+              <span className="font-semibold">Name:</span> {skill.providerName}
+            </p>
+            <p className="text-gray-700">
+              <span className="font-semibold">Email:</span>{" "}
+              {skill.providerEmail}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-6 text-center">
+            <div className="bg-blue-50 p-5 border rounded-xl">
+              <p className="text-gray-500">Price</p>
+              <h3 className="text-xl font-bold text-blue-700">
+                ${skill.price}
+              </h3>
+            </div>
+
+            <div className="bg-yellow-50 p-5 border rounded-xl">
+              <p className="text-gray-500">Rating</p>
+              <h3 className="text-xl font-bold text-yellow-600">
+                ⭐ {skill.rating}
+              </h3>
+            </div>
+
+            <div className="bg-green-50 p-5 border rounded-xl">
+              <p className="text-gray-500">Slots</p>
+              <h3 className="text-xl font-bold text-green-700">
+                {skill.slotsAvailable}
+              </h3>
+            </div>
+          </div>
+
+          <div className="pt-6">
+            <Link to={`/book-session/${skills.skillId}`} className="inline-block px-8 py-3 text-center transition w-full card-btn">
+              Book Session
+            </Link>
+          </div>
+        </div>
+      </div>
+    </MyContainer>
+  );
 };
 
 export default SkillDetails;

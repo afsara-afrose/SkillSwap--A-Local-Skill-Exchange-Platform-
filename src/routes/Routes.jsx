@@ -22,7 +22,7 @@ import BookSession from "../Pages/BookSession";
             element:<Home></Home>,
         },
         {
-            path:'/skillDetails',
+            path:'/skillDetail/:skillId',
             element:<PrivateRoutes>
               <SkillDetails></SkillDetails>
             </PrivateRoutes>,

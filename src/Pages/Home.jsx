@@ -7,27 +7,45 @@ import Loader from "../Components/loader";
 import MyContainer from "../Components/MyContainer";
 import TopRatedProviders from "../Components/HomePage/TopRatedProviders";
 import HowItWorks from "../Components/HomePage/HowItWorks";
+import SkillListSection from "../Components/HomePage/SkillListSection";
+import { RingLoader } from "react-spinners";
+
+
 
 const Home = () => {
-  const { skills, loading } = useSkills();
-  const featuredSkills = skills.slice(0, 6);
-  console.log(featuredSkills);
+  const { skills, loading,error } = useSkills();
 
+   if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+         <RingLoader size={50} color="#36d7b7" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p className="text-xl font-semibold text-red-500">
+          Error loading skills: {error.message}
+        </p>
+      </div>
+    );
+  }
+ 
   return (
     <>
     <MyContainer>
       <HeroSlider></HeroSlider>
-        <div className="flex justify-between py-5 items-center mt-10">
+        <div className="flex justify-between  item-center mx-auto py-5 items-center mt-20">
         <h1 className="text-3xl font-semibold">Featured <span className='text-yellow-600' >Skills</span></h1>
-        <Link className="btn btn-outline" to="/products">
-          See All Skills
-        </Link>
+        
       </div>
       {loading ? (
         <Loader />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {featuredSkills.map((skill) => (
+          {skills.map((skill) => (
             <SkillsCard key={skill.id} skill={skill} />
           ))}
         </div>
@@ -36,9 +54,15 @@ const Home = () => {
       <div>
        <TopRatedProviders  />
       </div>
+      <div className="mt-10 mb-10 ">
+        <SkillListSection skills={skills}></SkillListSection>
+        
+       
+      </div>
       <div className='mb-10'>
         <HowItWorks/>
       </div>
+
     </MyContainer>
     </>
   );

@@ -58,11 +58,7 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/skillDetails" className="font-semibold">
-                  Skill Details
-                </NavLink>
-              </li>
+              
               <li>
                 <NavLink to="/myProfile" className="font-semibold">
                   My Profile
@@ -93,18 +89,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/skillDetails"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-primary font-semibold border-b-2 border-primary"
-                    : "font-semibold"
-                }
-              >
-                Skill Details
-              </NavLink>
-            </li>
+           
             <li>
               <NavLink
                 to="/myProfile"

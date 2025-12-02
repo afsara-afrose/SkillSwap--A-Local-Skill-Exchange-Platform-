@@ -70,5 +70,66 @@
     "description": "Learn to cook traditional Bangladeshi recipes like biryani, bhuna khichuri, and fish curry.",
     "image": "https://i.ibb.co.com/ZzWGGGRd/undefined-1.jpg",
     "category": "Culinary"
+  },
+   {
+    "skillId": 7,
+    "skillName": "DIY Home Decor Crafts",
+    "providerName": "Rafiq Islam",
+    "providerEmail": "rafiq@skillswap.com",
+    "price": 18,
+    "rating": 4.7,
+    "slotsAvailable": 5,
+    "description": "Learn to make budget-friendly, stylish home decor items using simple DIY techniques.",
+    "image": "https://i.ibb.co.com/FbLNFn1j/5-DIY-Delight-Quirky-Crafts-to-Spark-Joy-This.jpg",
+    "category": "Arts & Crafts"
+  },
+  {
+    "skillId": 8,
+    "skillName": "Contemporary Dance Routines",
+    "providerName": "Rima Akter",
+    "providerEmail": "rima@skillswap.com",
+    "price": 20,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Learn modern and contemporary dance routines, improving flexibility, rhythm, and stage confidence.",
+    "image": "https://i.ibb.co.com/N6qdc4Yd/Dance-Workshops-Await-Want-to-learn-some-cool.jpg",
+    "category": "Dance"
+  },
+  {
+    "skillId": 9,
+    "skillName": "Machine Learning for Beginners",
+    "providerName": "Rahul Karim",
+    "providerEmail": "rahul@skillswap.com",
+    "price": 30,
+    "rating": 4.9,
+    "slotsAvailable": 5,
+    "description": "Learn basics of ML, including regression, classification, and building simple AI models with Python.",
+    "image": "https://i.ibb.co.com/k6Vr3qLN/Stop-juggling-meetings-In-2025-AI-Calendar.jpg",
+    "category": "Technology"
+  },
+  {
+    "skillId": 10,
+    "skillName": "Content Creation ",
+    "providerName": "Nabila Rahman",
+    "providerEmail": "nabila@skillswap.com",
+    "price": 18,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Learn to create engaging content including posts, videos, and graphics for Instagram, TikTok, and YouTube.",
+    "image": "https://i.ibb.co.com/Z6fzN0VM/Creando-contenido-para-You-Tube.jpg",
+    "category": "Digital Marketing"
+  },
+  {
+    "skillId": 11,
+    "skillName": "Artisan Baking & Pastry",
+    "providerName": "Tania Chowdhury",
+    "providerEmail": "tania@skillswap.com",
+    "price": 22,
+    "rating": 4.8,
+    "slotsAvailable": 4,
+    "description": "Learn to bake artisan bread, pastries, and desserts with professional techniques at home.",
+    "image": "https://i.ibb.co.com/bTFYxPQ/AI-creator.jpg",
+    "category": "Culinary"
   }
+  
 ]
