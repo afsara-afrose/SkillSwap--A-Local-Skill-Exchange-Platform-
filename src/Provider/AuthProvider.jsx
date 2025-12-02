@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -14,6 +15,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -33,6 +35,11 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+   const PassReset = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -44,11 +51,14 @@ const AuthProvider = ({ children }) => {
 
   const authData = {
     user,
+  loading,
+  setLoading,
     setUser,
     createUser,
     logOut,
     signIn,
     updateUser,
+    PassReset,
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;

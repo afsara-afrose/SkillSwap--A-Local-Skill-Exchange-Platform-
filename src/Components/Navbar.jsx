@@ -126,7 +126,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <Link to="/auth/login" className="btn btn-primary">
+            <Link to="/auth/login" className="card-btn p-3">
               Login
             </Link>
             <Link to="/auth/signup" className="btn btn-secondary">

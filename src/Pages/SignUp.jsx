@@ -125,8 +125,8 @@ const SignUp = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button type="submit" className="btn btn-neutral mt-4">
-              Login
+            <button type="submit" className=" w-full my-btn p-2 mt-4">
+              Register
             </button>
             <button
             type="button"

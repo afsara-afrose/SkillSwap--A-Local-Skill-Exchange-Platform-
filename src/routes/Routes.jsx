@@ -9,6 +9,7 @@ import SignUp from "../Pages/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
 import ViewDetails from "../Pages/ViewDetails";
 import BookSession from "../Pages/BookSession";
+import ForgetPassword from "../Components/ForgetPassword";
 
 
 
@@ -61,6 +62,10 @@ import BookSession from "../Pages/BookSession";
         path:'/auth/logout',
         element:<Login></Login>,
       },
+      {
+        path:"/auth/forget-password",
+        element:<ForgetPassword />
+      }
     ]
   },
 
