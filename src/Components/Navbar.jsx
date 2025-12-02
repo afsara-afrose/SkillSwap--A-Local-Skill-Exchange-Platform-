@@ -1,15 +1,32 @@
-import React from "react";
+import React, { use } from "react";
 
 import MyContainer from "./MyContainer";
-import logo from "../assets/NavbarLogo.png"
-import loginicon from '../assets/loginlogo.png'
-import { NavLink } from "react-router";
+import logo from "../assets/NavbarLogo.png";
+import avatarImg from "../assets/avatar.png";
+import { Link, NavLink, useNavigate } from "react-router";
+
+import { toast } from "react-toastify";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Navbar = () => {
-  return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <MyContainer className="flex justify-between items-center">
+  const { user, logOut } = use(AuthContext);
+  const navigate = useNavigate();
 
+  const handleLogOut = () => {
+    console.log("User trying to log out");
+    logOut()
+      .then(() => {
+        navigate("/auth/login");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
+
+  return (
+    <div className="navbar bg-amber-200 shadow-sm">
+      <MyContainer className="flex justify-between items-center">
         {/* Navbar Start */}
         <div className="navbar-start">
           {/* Dropdown for mobile */}
@@ -62,7 +79,7 @@ const Navbar = () => {
         </div>
 
         {/* Navbar Center (desktop view) */}
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 gap-3">
             <li>
               <NavLink
@@ -104,12 +121,34 @@ const Navbar = () => {
         </div>
 
         {/* Navbar End */}
-        <div className="navbar-end flex items-center gap-3">
-          <img className="w-[35px]" src={loginicon} alt="Login Icon" />
-          <NavLink to="/login" className="btn btn-primary">
-            Login
-          </NavLink>
-        </div>
+        {user ? (
+          <div className="flex items-center gap-4">
+            {/* user avatar with hover name */}
+            <div className="relative group cursor-pointer">
+              <img
+                className="w-[45px] h-[45px] rounded-full border-2 border-primary"
+                src={user.photoURL || avatarImg}
+                alt="User Avatar"
+              />
+              <span className="absolute left-1/2 -translate-x-1/2 bottom-[-30px] bg-gray-800 text-white text-sm px-2 py-1  opacity-0 group-hover:opacity-100 transition">
+                {user?.displayName ? user.displayName : "Anonymous User"}
+              </span>
+            </div>
+
+            <button onClick={handleLogOut} className="btn btn-primary">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+            <Link to="/auth/login" className="btn btn-primary">
+              Login
+            </Link>
+            <Link to="/auth/signup" className="btn btn-secondary">
+              SignUp
+            </Link>
+          </div>
+        )}
       </MyContainer>
     </div>
   );

@@ -1,11 +1,116 @@
-import React from 'react';
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { AuthContext } from "../Provider/AuthContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../Firebase/firrebase.config";
+import { RingLoader } from "react-spinners";
+
+const provider = new GoogleAuthProvider();
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  if (loading) {
     return (
-        <div>
-            LoginPage
-        </div>
+      <div className="min-h-screen flex justify-center items-center">
+        <RingLoader size={50} color="#36d7b7" />
+      </div>
     );
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setLoading(true)
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully signIn");
+        navigate(from);
+      })
+      .catch((error) => {
+        
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorCode, errorMessage);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+    signInWithPopup(auth, provider)
+      .then(() => {
+        toast.success("Google Sign-In Successful");
+        navigate(from);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Google Sign-In Failed");
+      })
+      .finally(() => setLoading(false));
+  };
+  return (
+    <div className="flex justify-center min-h-screen items-center">
+      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+        <h2 className="font-semibold text-2xl text-center">
+          Login your account
+        </h2>
+        <form onSubmit={handleLogin} className="card-body">
+          <fieldset className="fieldset">
+            {/* email  */}
+            <label className="label">Email</label>
+            <input
+              name="email"
+              type="email"
+              className="input"
+              placeholder="Email"
+              required
+            />
+            {/* passowrd  */}
+            <label className="label">Password</label>
+            <input
+              name="password"
+              type="password"
+              className="input"
+              placeholder="Password"
+              required
+            />
+            <div>
+              <a className="link link-hover">Forgot password?</a>
+            </div>
+            <button type="submit" className="btn btn-neutral mt-4">
+              Login
+            </button>
+
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn  bg-white rounded-full text-black border-[#e5e5e5]"
+            >
+              <FcGoogle />
+              Login with Google
+            </button>
+            <p className="font-semibold text-center pt-5">
+              Dont’t Have An Account ?{" "}
+              <Link className="text-secondary" to="/auth/signup">
+                SignUp
+              </Link>
+            </p>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
