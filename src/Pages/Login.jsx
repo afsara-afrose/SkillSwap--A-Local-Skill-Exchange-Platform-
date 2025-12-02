@@ -40,7 +40,7 @@ const Login = () => {
         navigate(from);
       })
       .catch((error) => {
-        
+
         const errorCode = error.code;
         const errorMessage = error.message;
         toast.error(errorCode, errorMessage);
@@ -95,7 +95,7 @@ const Login = () => {
 
             <button
               onClick={handleGoogleSignIn}
-              className="btn  bg-white rounded-full text-black border-[#e5e5e5]"
+              className="btn mt-3 bg-white rounded-full text-black border-[#e5e5e5] hover:scale-105 transition"
             >
               <FcGoogle />
               Login with Google

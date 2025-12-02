@@ -2,6 +2,12 @@ import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Provider/AuthContext";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../Firebase/firrebase.config";
+
+
+const provider = new GoogleAuthProvider();
 
 const SignUp = () => {
   const {createUser,updateUser}=use (AuthContext)
@@ -36,6 +42,17 @@ const SignUp = () => {
       toast.error(error.message)
     })
 
+  };
+   // google sign in
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then(() => {
+        toast.success("Google Sign-In Successful");
+        navigate("/");
+      })
+      .catch(() => {
+        toast.error("Google Sign-In Failed");
+      });
   };
   return (
     <div className="flex justify-center min-h-screen items-center">
@@ -89,6 +106,13 @@ const SignUp = () => {
             <button type="submit" className="btn btn-neutral mt-4">
               Login
             </button>
+            <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            className="btn bg-white rounded-full text-black border-[#e5e5e5]"
+          >
+            <FcGoogle /> Login with Google
+          </button>
             <p className="font-semibold text-center pt-5">
               Dont’t Have An Account ?{" "}
               <Link className="text-secondary" to="/auth/login">
