@@ -31,7 +31,7 @@ export default function Slider() {
     </div>
 
     {/* Right Side Slider */}
-    <div className="w-2/3">
+    <div className="w-2/3 mt-10">
       <Swiper navigation={true} modules={[Navigation]}>
         {[img1, img2, img3, img4, img5].map((img, i) => (
           <SwiperSlide key={i}>

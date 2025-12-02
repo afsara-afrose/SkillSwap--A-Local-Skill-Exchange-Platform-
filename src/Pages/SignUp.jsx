@@ -21,7 +21,19 @@ const SignUp = () => {
     const email=form.email.value;
     const photoURL=form.photoURL.value;
     const password=form.password.value;
-    console.log({displayName,email,photoURL,password})
+   
+
+    // validation
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters");
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).+$/;
+    if (!passwordRegex.test(password)) {
+      toast.error("Password must contain uppercase & lowercase letters");
+      return;
+    }
 
     createUser(email,password)
     .then(res=>{
