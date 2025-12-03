@@ -1,7 +1,8 @@
 # SkillSwap
 
 **Live URL:** https://skillslearning-platform.netlify.app
-**GitHub URL:**
+
+**GitHub URL:** https://github.com/afsara-afrose/SkillSwap--A-Local-Skill-Exchange-Platform-.git
 
 ---
 
