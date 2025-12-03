@@ -3,7 +3,6 @@ import MainLayout from "../Layout/MainLayout";
 import MyProfile from "../Pages/MyProfile";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
-import SkillDetails from "../Pages/SkillDetails";
 import AuthLayout from "../Layout/AuthLayout";
 import SignUp from "../Pages/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
@@ -22,13 +21,7 @@ import ForgetPassword from "../Components/ForgetPassword";
             index:true,
             element:<Home></Home>,
         },
-        {
-            path:'/skillDetail/:skillId',
-            element:<PrivateRoutes>
-              <SkillDetails></SkillDetails>
-            </PrivateRoutes>,
-
-        },
+        
         {
           path:'/viewDetails/:skillId',
           element:<PrivateRoutes>

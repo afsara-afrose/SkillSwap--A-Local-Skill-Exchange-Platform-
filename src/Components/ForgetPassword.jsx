@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import { toast } from "react-toastify";
 
 const ForgetPassword = () => {
   const location = useLocation();
   const [email, setEmail] = useState("");
   const{PassReset}=useContext(AuthContext)
   const[loading,setLoading]=useState(false)
+  const emailRef=useRef(null)
+  console.log(emailRef)
 
   // Pre-fill email if provided
   useEffect(() => {
@@ -32,10 +35,10 @@ const ForgetPassword = () => {
     PassReset(email)
       .then(() => {
         setLoading(false);
-        alert("Password reset email sent! Redirecting to Gmail...");
-        window.location.href = "https://mail.google.com"; 
+       toast.success("Password reset email sent!");
+        
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => toast.error(err.message));
   };
    
   
@@ -50,15 +53,18 @@ const ForgetPassword = () => {
           <label className="label">Email</label>
           <input
             type="email"
+            name="email"
             className="input"
             placeholder="Enter your email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => 
+              setEmail(e.target.value)}
+            
           />
 
           <button
             onClick={handleReset}
-            className="btn btn-neutral mt-4"
+            className="w-full my-btn mt-4 p-2"
           >
             Reset Password
           </button>

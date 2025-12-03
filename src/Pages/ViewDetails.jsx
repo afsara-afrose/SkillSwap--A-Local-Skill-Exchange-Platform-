@@ -21,8 +21,11 @@ const ViewDetails = () => {
   }
 
   return (
-    <MyContainer className="w-full flex justify-center py-10 px-3 md:px-0">
-      <div className="w-full max-w-3xl bg-pink-100 shadow-2xl rounded-2xl overflow-hidden border">
+    <MyContainer>
+
+      <h1 className='text-center text-3xl font-bold mt-10'>Skill <span className='text-pink-700'> Details</span> </h1>
+      <div className="w-full flex justify-center py-10 px-3 md:px-0">
+        <div className="w-full max-w-3xl bg-pink-100 shadow-2xl rounded-2xl overflow-hidden border">
 
         {/* Image Section */}
         <div className="w-full h-[220px] sm:h-[260px] md:h-[300px]">
@@ -92,10 +95,23 @@ const ViewDetails = () => {
               </h3>
             </div>
 
+
           </div>
+          {/* Book Button */}
+                    <div className="pt-6">
+                      <Link
+                        to={`/book-session/${skill.skillId}`}
+                        className="inline-block px-8 py-3 text-center transition w-full card-btn"
+                      >
+                        Book Session
+                      </Link>
+                    </div>
 
         </div>
       </div>
+
+      </div>
+      
     </MyContainer>
   );
 };

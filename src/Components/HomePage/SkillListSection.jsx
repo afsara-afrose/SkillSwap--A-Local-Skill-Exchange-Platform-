@@ -8,7 +8,7 @@ const SkillListSection = ({ skills }) => {
   return (
     <div className="space-y-6 bg-blue-100 rounded-2xl">
       <h1 className="text-3xl text-center p-10 font-bold text-pink-500">
-        SKILL <span className="text-black">DETAILS</span>
+        Top Rated <span className="text-black">Skills</span>
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 p-5 md:p-10">
@@ -47,15 +47,6 @@ const SkillListSection = ({ skills }) => {
                 <p className="text-gray-600 mt-2">{skill.category}</p>
                 <p className="text-green-600 font-bold mt-1">${skill.price}</p>
               </div>
-            </div>
-
-            <div className="w-full md:w-1/5 flex justify-center md:justify-end mt-4 md:mt-0">
-              <Link
-                to={`/skillDetail/${skill.skillId}`}
-                className="block px-6 py-3 text-center card-btn hover:bg-yellow-700 transition w-full md:w-auto"
-              >
-                Skill Details
-              </Link>
             </div>
           </div>
         ))}

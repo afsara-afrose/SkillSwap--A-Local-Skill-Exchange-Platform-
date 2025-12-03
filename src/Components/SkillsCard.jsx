@@ -16,7 +16,9 @@ const SkillsCard = ({ skill }) => {
       <h2 className="text-xl font-semibold mt-3">{skill.skillName}</h2>
 
       <div className="flex items-center gap-1">
-        <SlStar color="yellow" size={20} />
+       <div className='text-yellow-700'>
+         <SlStar color="yellow" size={20} />
+       </div>
         <span className="font-semibold text-gray-700">{skill.rating}</span>
       </div>
 

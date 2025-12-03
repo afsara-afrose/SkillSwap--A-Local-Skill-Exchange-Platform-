@@ -38,7 +38,7 @@ const Login = () => {
 
     signIn(email, password)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         toast.success("Successfully signed in");
         navigate(from);
       })
@@ -57,7 +57,9 @@ const Login = () => {
     PassReset(email)
       .then(() => {
         toast.success("Check your email to reset password");
-        navigate("/auth/forget-password");
+        navigate("/auth/forget-password", {
+          state: { email: email },
+        });
       })
       .catch((e) => {
         toast.error(e.message);
@@ -109,7 +111,7 @@ const Login = () => {
             />
             <span
               onClick={() => setShowPass(!showPass)}
-              className="absolute right-3 top-10 md:top-12 cursor-pointer text-xl"
+              className="absolute right-3 top-12 md:top-12 cursor-pointer text-xl"
             >
               {showPass ? <FaEye /> : <IoEyeOff />}
             </span>

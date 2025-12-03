@@ -9,6 +9,7 @@ import TopRatedProviders from "../Components/HomePage/TopRatedProviders";
 import HowItWorks from "../Components/HomePage/HowItWorks";
 import SkillListSection from "../Components/HomePage/SkillListSection";
 import { RingLoader } from "react-spinners";
+import WhyChoose from "../Components/HomePage/WhyChoose";
 
 
 
@@ -61,6 +62,10 @@ const Home = () => {
       </div>
       <div className='mb-10'>
         <HowItWorks/>
+      </div>
+
+      <div className='mb-10'>
+        <WhyChoose></WhyChoose>
       </div>
 
     </MyContainer>
